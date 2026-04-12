@@ -88,9 +88,9 @@ Companion Pi kiosk dashboard for monitoring ceramic kiln firings in real time. C
 
 <table>
 <tr>
-<td width="300"><a href="https://github.com/topness-msft/TodoNess"><img src="screens/todoness.png" alt="TodoNess" width="280"></a></td>
+<td width="300"><a href="https://github.com/topness-msft/TodoNess"><img src="screens/todoiq.png" alt="TodoIQ" width="280"></a></td>
 <td>
-<h3>TodoNess &nbsp; <a href="https://github.com/topness-msft/TodoNess"><img src="https://img.shields.io/badge/repo-GitHub-181717?logo=github&logoColor=white" alt="GitHub" height="18"></a></h3>
+<h3>TodoIQ &nbsp; <a href="https://github.com/topness-msft/TodoNess"><img src="https://img.shields.io/badge/repo-GitHub-181717?logo=github&logoColor=white" alt="GitHub" height="18"></a></h3>
 <br>
 AI-powered task manager that scans Microsoft 365 — Teams, meetings, flagged emails — to surface actionable to-dos. System-tray app with web dashboard, backed by Claude and WorkIQ MCP.
 </td>
