@@ -77,7 +77,7 @@ Raspberry Pi kiosk app tracking aircraft overhead via OpenSky Network. Two theme
 
 <table>
 <tr>
-<td width="300"><a href="https://github.com/topness-msft/KilnMonitor"><img src="screens/kilnmonitor.png" alt="KilnMonitor" width="280"></a></td>
+<td width="300"><a href="https://github.com/topness-msft/KilnMonitor"><img src="screens/kilnmonitor2.png" alt="KilnMonitor" width="280"></a></td>
 <td>
 <h3>KilnMonitor &nbsp; <a href="https://github.com/topness-msft/KilnMonitor"><img src="https://img.shields.io/badge/repo-GitHub-181717?logo=github&logoColor=white" alt="GitHub" height="18"></a></h3>
 <br>
