@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phil Topness — Projects</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-bg: #faf9f7;
+      --color-surface: #ffffff;
+      --color-text: #1a1a1a;
+      --color-text-secondary: #555;
+      --color-accent: #2a5a3a;
+      --color-accent-light: #e8f0eb;
+      --color-border: #e5e2dd;
+      --color-badge-live: #2a5a3a;
+      --color-badge-beta: #b8860b;
+      --color-badge-repo: #24292f;
+      --font-display: 'Source Sans 3', 'Segoe UI', sans-serif;
+      --font-body: 'Source Sans 3', 'Segoe UI', sans-serif;
+      --shadow-card: 0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.06);
+      --shadow-card-hover: 0 2px 8px rgba(0,0,0,0.06), 0 8px 30px rgba(0,0,0,0.10);
+      --radius: 10px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* --- Grain overlay for texture --- */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 100;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    }
+
+    .page-wrapper {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* --- Header --- */
+    header {
+      padding: 72px 0 48px;
+      border-bottom: 1px solid var(--color-border);
+      margin-bottom: 56px;
+    }
+
+    header h1 {
+      font-family: var(--font-display);
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--color-text);
+      margin-bottom: 12px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    header p {
+      font-size: 1.15rem;
+      font-weight: 300;
+      color: var(--color-text-secondary);
+      max-width: 600px;
+      line-height: 1.7;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.15s forwards;
+    }
+
+    /* --- Projects --- */
+    .projects-heading {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--color-accent);
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.3s forwards;
+    }
+
+    .project-card {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 0;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 28px;
+      box-shadow: var(--shadow-card);
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      opacity: 0;
+      animation: fadeUp 0.5s ease forwards;
+    }
+
+    .project-card:hover {
+      box-shadow: var(--shadow-card-hover);
+      transform: translateY(-2px);
+    }
+
+    .project-card:nth-child(1) { animation-delay: 0.35s; }
+    .project-card:nth-child(2) { animation-delay: 0.42s; }
+    .project-card:nth-child(3) { animation-delay: 0.49s; }
+    .project-card:nth-child(4) { animation-delay: 0.56s; }
+    .project-card:nth-child(5) { animation-delay: 0.63s; }
+    .project-card:nth-child(6) { animation-delay: 0.70s; }
+    .project-card:nth-child(7) { animation-delay: 0.77s; }
+
+    .project-image {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #e8e6e1 0%, #d5d2cc 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 220px;
+    }
+
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      cursor: zoom-in;
+    }
+
+    .project-image .placeholder {
+      font-size: 3.5rem;
+      opacity: 0.35;
+      user-select: none;
+    }
+
+    .project-body {
+      padding: 28px 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .project-title-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .project-title {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-weight: 400;
+      color: var(--color-text);
+    }
+
+    .project-title a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1.5px solid transparent;
+      transition: border-color 0.2s ease;
+    }
+
+    .project-title a:hover {
+      border-color: var(--color-accent);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 3px 10px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    .badge-live {
+      background: var(--color-accent-light);
+      color: var(--color-badge-live);
+    }
+
+    .badge-live::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--color-badge-live);
+      display: inline-block;
+    }
+
+    .badge-beta {
+      background: #fdf6e3;
+      color: var(--color-badge-beta);
+    }
+
+    .badge-repo {
+      background: var(--color-badge-repo);
+      color: #fff;
+      text-decoration: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .badge-repo:hover { opacity: 0.8; }
+
+    .badge-repo svg {
+      width: 12px;
+      height: 12px;
+      fill: currentColor;
+    }
+
+    .project-description {
+      font-size: 0.975rem;
+      font-weight: 400;
+      color: var(--color-text-secondary);
+      line-height: 1.7;
+    }
+
+    .project-description strong {
+      color: var(--color-text);
+      font-weight: 600;
+    }
+
+    /* --- Footer --- */
+    footer {
+      margin-top: 48px;
+      padding: 32px 0;
+      border-top: 1px solid var(--color-border);
+      text-align: center;
+      color: var(--color-text-secondary);
+      font-size: 0.85rem;
+      font-weight: 300;
+    }
+
+    footer a {
+      color: var(--color-accent);
+      text-decoration: none;
+    }
+
+    footer a:hover { text-decoration: underline; }
+
+    /* --- Responsive --- */
+    @media (max-width: 768px) {
+      header { padding: 48px 0 36px; margin-bottom: 40px; }
+      header h1 { font-size: 2rem; }
+      header p { font-size: 1.05rem; }
+
+      .project-card {
+        grid-template-columns: 1fr;
+      }
+
+      .project-image { min-height: 200px; }
+      .project-body { padding: 20px 24px; }
+      .project-title { font-size: 1.25rem; }
+    }
+
+    /* --- Lightbox --- */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: zoom-out;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .lightbox.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 8px;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+      transform: scale(0.92);
+      transition: transform 0.3s ease;
+    }
+
+    .lightbox.active img {
+      transform: scale(1);
+    }
+
+    /* --- Animations --- */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="lightbox" id="lightbox">
+  <img src="" alt="Zoomed screenshot" id="lightbox-img">
+</div>
+
+<div class="page-wrapper">
+
+  <header>
+    <h1>Phil Topness</h1>
+    <p>I build tools at the intersection of AI, real-time data, and delightful UX — mostly to scratch my own itch, often ending up as something others can use too.</p>
+  </header>
+
+  <div class="projects-heading">Projects</div>
+
+  <!-- CrowdHum -->
+  <div class="project-card">
+    <div class="project-image">
+      <img src="screens/crowdhum.png" alt="CrowdHum">
+    </div>
+    <div class="project-body">
+      <div class="project-title-row">
+        <span class="project-title"><a href="https://crowdhum.com">CrowdHum</a></span>
+        <span class="badge badge-live">Live</span>
+        <span class="badge badge-beta">Beta</span>
+      </div>
+      <p class="project-description">Live audience polling where votes become physics-animated glowing spheres. No app install required — attendees scan a QR code, vote, and watch the results materialize dramatically on screen. Built for speakers and facilitators.</p>
+    </div>
+  </div>
+
+  <!-- MCP Station -->
+  <div class="project-card">
+    <div class="project-image">
+      <img src="screens/mcpstation.png" alt="MCP Station">
+    </div>
+    <div class="project-body">
+      <div class="project-title-row">
+        <span class="project-title"><a href="https://mcpstation.io">MCP Station</a></span>
+        <span class="badge badge-live">Live</span>
+        <span class="badge badge-beta">Beta</span>
+      </div>
+      <p class="project-description">Generate mock MCP servers from a prompt, sample data, or OpenAPI spec — and browse a catalog of pre-built servers and agent recipes. Deploy to Copilot Studio, Claude Desktop, or Cursor. <strong>Free for anyone to use at hackathons.</strong></p>
+    </div>
+  </div>
+
+  <!-- ReplayLane -->
+  <div class="project-card">
+    <div class="project-image">
+      <img src="screens/replaylane.png" alt="ReplayLane">
+    </div>
+    <div class="project-body">
+      <div class="project-title-row">
+        <span class="project-title"><a href="https://replaylane.com">ReplayLane</a></span>
+        <span class="badge badge-live">Live</span>
+        <span class="badge badge-beta">Beta</span>
+      </div>
+      <p class="project-description">Turn any screen recording into an interactive click-through demo. Upload a video and get back a shareable HTML simulation — viewers click through each step at their own pace instead of watching a video. Perfect for product walkthroughs, training guides, and documentation.</p>
+    </div>
+  </div>
+
+  <!-- WordSync -->
+  <div class="project-card">
+    <div class="project-image">
+      <img src="screens/wordsync.png" alt="WordSync">
+    </div>
+    <div class="project-body">
+      <div class="project-title-row">
+        <span class="project-title"><a href="https://wordsync.app">WordSync</a></span>
+        <span class="badge badge-live">Live</span>
+        <a class="badge badge-repo" href="https://github.com/topness-msft/wordsync">
+          <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          Repo
+        </a>
+      </div>
+      <p class="project-description">An interactive German language learning tool that turns Deutsche Welle's slowly-spoken news into a tap-to-translate reading experience with word-by-word audio highlighting. Powered by Whisper + DeepL, updated daily via GitHub Actions, hosted entirely for free.</p>
+    </div>
+  </div>
+
+  <!-- AdoptionPulse -->
+  <div class="project-card">
+    <div class="project-image">
+      <img src="screens/adoptionpulse.png" alt="AdoptionPulse">
+    </div>
+    <div class="project-body">
+      <div class="project-title-row">
+        <span class="project-title"><a href="https://adoptionpulse.com">AdoptionPulse</a></span>
+        <span class="badge badge-live">Live</span>
+      </div>
+      <p class="project-description">An interactive AI adoption maturity assessment that guides organizations through a decision-tree questionnaire to evaluate their AI readiness across a three-phase model — Empower, Reshape, and Reinvent.</p>
+    </div>
+  </div>
+
+  <!-- FlightView -->
+  <div class="project-card">
+    <div class="project-image">
+      <img src="screens/flightradar.png" alt="FlightView">
+    </div>
+    <div class="project-body">
+      <div class="project-title-row">
+        <span class="project-title">FlightView</span>
+        <a class="badge badge-repo" href="https://github.com/topness-msft/FlightView">
+          <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          Repo
+        </a>
+      </div>
+      <p class="project-description">A Raspberry Pi kiosk app that tracks aircraft overhead in real time using OpenSky Network data. Features two display themes — a vintage Solari split-flap board and a modern Heathrow-style signage — designed for 7″ and 10″ touchscreens.</p>
+    </div>
+  </div>
+
+  <!-- KilnMonitor -->
+  <div class="project-card">
+    <div class="project-image">
+      <img src="screens/kilnmonitor.png" alt="KilnMonitor">
+    </div>
+    <div class="project-body">
+      <div class="project-title-row">
+        <span class="project-title">KilnMonitor</span>
+        <a class="badge badge-repo" href="https://github.com/topness-msft/KilnMonitor">
+          <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          Repo
+        </a>
+      </div>
+      <p class="project-description">A companion Pi kiosk dashboard for monitoring ceramic kiln firings in real time. Connects to an L&L kiln's Bartlett Genesis controller via the KilnAid cloud API, with a dynamic ramp chart that auto-zooms to the active temperature range. Shares a screen with FlightView through an intelligent kiosk hub.</p>
+    </div>
+  </div>
+
+  <!-- TodoNess -->
+  <div class="project-card">
+    <div class="project-image">
+      <img src="screens/todoness.png" alt="TodoNess">
+    </div>
+    <div class="project-body">
+      <div class="project-title-row">
+        <span class="project-title"><a href="https://github.com/topness-msft/TodoNess">TodoNess</a></span>
+        <a class="badge badge-repo" href="https://github.com/topness-msft/TodoNess">
+          <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          Repo
+        </a>
+      </div>
+      <p class="project-description">A local AI-powered task manager that scans Microsoft 365 (Teams chats, meetings, flagged emails) to surface actionable to-dos. Runs as a system-tray app on Windows with a web dashboard, backed by Claude and WorkIQ MCP.</p>
+    </div>
+  </div>
+
+  <footer>
+    <p><a href="https://github.com/topness-msft">github.com/topness-msft</a></p>
+  </footer>
+
+</div>
+
+<script>
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+
+  document.querySelectorAll('.project-image img').forEach(img => {
+    img.addEventListener('click', () => {
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightbox.classList.add('active');
+    });
+  });
+
+  lightbox.addEventListener('click', () => lightbox.classList.remove('active'));
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') lightbox.classList.remove('active');
+  });
+</script>
+
+</body>
+</html>
