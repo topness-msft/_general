@@ -4,7 +4,7 @@
 
 Your assertion is **well-supported by industry consensus, data trends, and historical precedent**. The claim has three parts—(1) chat-based AI is a short-lived dominant interface, (2) AI will become integrated and proactive within existing interfaces, and (3) AI autonomy will grow gradually as trust builds—and all three find strong corroboration across analyst reports, CEO statements, UX research, usage data, and technology history. You are not alone in this view; in fact, it is approaching conventional wisdom among the leading voices in technology. The strongest version of your timeline (1–2 years) is ambitious but defensible: Gartner predicts 40% of enterprise apps will have embedded AI agents by end of 2026, up from <5% in 2025[^1]. The data already shows cracks in the chat-only model, with ChatGPT engagement declining meaningfully in late 2025[^2].
 
-A critical refinement: **not all "embedding" is equal.** A chat pane docked inside Outlook (Tier 2: embedded chat) is still fundamentally a chat interface — the user stops working, types a prompt, reads a response, and goes back to email. The real paradigm shift is to **ambient intelligence** (Tier 3) — inline suggestions, smart completions, automatic routing, proactive surfacing — where the app itself gets smarter and the user never leaves their workflow. Beyond that lies **autonomous/headless automation** (Tier 4) — where AI acts entirely without a user present. This paper uses a four-tier taxonomy (Standalone Chat → Embedded Chat → Ambient Intelligence → Autonomous/Headless) to make these distinctions precise.
+A critical refinement: **not all "embedding" is equal.** A chat pane docked inside Outlook (Tier 1b: app-embedded chat) is still fundamentally a chat interface — the user stops working, types a prompt, reads a response, and goes back to email. The real paradigm shift is to **ambient intelligence** (Tier 2) — inline suggestions, smart completions, automatic routing, proactive surfacing, digital workers — where the app itself gets smarter and the user never leaves their workflow. Beyond that lies **autonomous/headless automation** (Tier 3) — where AI acts entirely without a user present. This paper uses a taxonomy of Tier 1a (Standalone Chat) → Tier 1b (App-Embedded Chat) → Tier 2 (Ambient Intelligence) → Tier 3 (Autonomous/Headless) to make these distinctions precise.
 
 ---
 
@@ -56,36 +56,36 @@ But "integrated" is doing too much work as a single concept. There is a critical
 
 The real transition is from **request-response** (regardless of where the chat window lives) to **continuous ambient intelligence** that acts, suggests, completes, routes, and improves the app's own functionality — without the user ever explicitly invoking it.
 
-### The Four Tiers of AI Integration
+### The AI Integration Taxonomy
 
 This distinction demands a sharper taxonomy than "standalone vs. embedded":
 
 | Tier | Name | Interaction Model | Example | Still Chat? |
 |------|------|-------------------|---------|-------------|
-| **1** | **Standalone Chat** | User leaves workflow → opens separate app → types prompt → reads response → returns to work | ChatGPT, Claude.ai, Gemini web app | Yes |
-| **2** | **Embedded Chat** | User stays in app → opens side panel/pane → types prompt → reads response → returns to work | Copilot pane in Outlook, AI sidebar in Teams, GitHub Copilot Chat panel | **Yes** — chat relocated, not reimagined |
-| **3** | **Ambient Intelligence** | User never stops working → app proactively suggests, completes, routes, flags, and acts inline | Smart compose, inline code completions, auto-prioritized inbox, deal risk flags on CRM records, smart routing | **No** — this is the paradigm shift |
-| **4** | **Autonomous / Headless** | No user present → AI acts independently, coordinates with other agents, reports outcomes after the fact (or not at all) | Invoice processing agents, KPI monitoring agents, scheduled report generation, agent-to-agent workflows | **No** — and no user either |
+| **1a** | **Standalone Chat** | User leaves workflow → opens separate app → types prompt → reads response → returns to work | ChatGPT, Claude.ai, Gemini web app | Yes |
+| **1b** | **App-Embedded Chat** | User stays in app → opens side panel/pane → types prompt → reads response → returns to work | Copilot pane in Outlook, AI sidebar in Teams, GitHub Copilot Chat panel | **Yes** — chat relocated, not reimagined |
+| **2** | **Ambient Intelligence** | User never stops working → app proactively suggests, completes, routes, flags, and acts inline | Smart compose, inline code completions, auto-prioritized inbox, deal risk flags on CRM records, smart routing, digital workers | **No** — this is the paradigm shift |
+| **3** | **Autonomous / Headless** | No user present → AI acts independently, coordinates with other agents, reports outcomes after the fact (or not at all) | Invoice processing agents, KPI monitoring agents, scheduled report generation, agent-to-agent workflows | **No** — and no user either |
 
-**The thesis should be stated precisely:** the transition that matters is from Tiers 1-2 to Tier 3, and then from Tier 3 to Tier 4. Moving chat from a standalone app into an app sidebar (Tier 1 → 2) is cosmetic. Moving from any form of chat to ambient intelligence (Tiers 1-2 → 3) is structural. Moving from ambient intelligence to autonomous operation (Tier 3 → 4) is a trust threshold — it requires the highest organizational readiness and governance.
+**The thesis should be stated precisely:** the transition that matters is from Tier 1 (both 1a and 1b) to Tier 2, and then from Tier 2 to Tier 3. Moving chat from a standalone app into an app sidebar (Tier 1a → 1b) is cosmetic. Moving from any form of chat to ambient intelligence (Tier 1 → 2) is structural. Moving from ambient intelligence to autonomous operation (Tier 2 → 3) is a trust threshold — it requires the highest organizational readiness and governance.
 
-Tier 2 is a necessary stepping stone — it gets AI into the user's visual field and builds familiarity. But it should not be confused with the destination. A chat pane bolted into Outlook is to ambient intelligence what a Garmin suction-cupped to a dashboard is to built-in turn-by-turn navigation: same physical space, fundamentally different integration depth. And Tier 3 (ambient) is the destination for user-facing AI — Tier 4 (autonomous) is the destination for AI that works while no one is watching.
+Tier 1b is a necessary stepping stone — it gets AI into the user's visual field and builds familiarity. But it should not be confused with the destination. A chat pane bolted into Outlook is to ambient intelligence what a Garmin suction-cupped to a dashboard is to built-in turn-by-turn navigation: same physical space, fundamentally different integration depth. And Tier 2 (ambient) is the destination for user-facing AI — Tier 3 (autonomous) is the destination for AI that works while no one is watching.
 
 ### Where the Major Players Actually Are
 
 Microsoft's strategy is the clearest current example — and also the one where the tier distinction matters most. Copilot is being built into Outlook, Teams, Word, Excel, Windows taskbar, settings, and Edge. But the integration is *uneven across tiers*:
 
-- **Tier 2 (Embedded Chat):** The Copilot pane in Outlook, the Copilot sidebar in Teams, the Copilot panel in Word — these are all chat interfaces that moved address. The interaction model is still prompt-response. This is the most visible layer of M365 Copilot today.
-- **Tier 3 (Ambient Intelligence):** Meeting summaries that appear automatically in Teams, inline suggestions in Word, data insights that surface proactively in Excel, the Facilitator agent that joins meetings without being asked — these represent genuine ambient intelligence. The user didn't prompt. The app got smarter.
-- **Tier 4 (Autonomous / Headless):** Copilot Studio agents that run on schedules, process data between systems, send notifications, and complete multi-step workflows without a human initiating or approving each step. This is the agentic layer Microsoft calls "autonomous agents" in the Copilot Studio framework.
+- **Tier 1b (Embedded Chat):** The Copilot pane in Outlook, the Copilot sidebar in Teams, the Copilot panel in Word — these are all chat interfaces that moved address. The interaction model is still prompt-response. This is the most visible layer of M365 Copilot today.
+- **Tier 2 (Ambient Intelligence):** Meeting summaries that appear automatically in Teams, inline suggestions in Word, data insights that surface proactively in Excel, the Facilitator agent that joins meetings without being asked — these represent genuine ambient intelligence. The user didn't prompt. The app got smarter.
+- **Tier 3 (Autonomous / Headless):** Copilot Studio agents that run on schedules, process data between systems, send notifications, and complete multi-step workflows without a human initiating or approving each step. This is the agentic layer Microsoft calls "autonomous agents" in the Copilot Studio framework.
 
-The critical point: **Microsoft is investing in both Tier 2 and Tier 3, but Tier 2 gets disproportionate attention because it's visible and marketable.** Tier 3 features are quiet by design — you don't notice them unless they're absent. This creates a perception gap where "Copilot in Outlook" *looks* like a chat sidebar and is *evaluated* as a chat sidebar, even when Tier 3 features are silently improving the app underneath[^3][^14].
+The critical point: **Microsoft is investing in both Tier 1b and Tier 2, but Tier 1b gets disproportionate attention because it's visible and marketable.** Tier 2 features are quiet by design — you don't notice them unless they're absent. This creates a perception gap where "Copilot in Outlook" *looks* like a chat sidebar and is *evaluated* as a chat sidebar, even when Tier 2 features are silently improving the app underneath[^3][^14].
 
 Google is following the same trajectory, embedding Gemini throughout Android OS, Chrome, and smart home products as a context-aware, multi-modal "ambient" AI layer — though the consumer-facing surface is still heavily chat-centric (Gemini app, Gemini in Search)[^15].
 
-### How This Will Manifest Across the Four Tiers
+### How This Will Manifest Across the Tiers
 
-| Dimension | Tier 1: Standalone Chat | Tier 2: Embedded Chat | Tier 3: Ambient Intelligence | Tier 4: Autonomous / Headless |
+| Dimension | Tier 1a: Standalone Chat | Tier 1b: Embedded Chat | Tier 2: Ambient Intelligence | Tier 3: Autonomous / Headless |
 |-----------|------------------------|----------------------|------------------------------|-------------------------------|
 | **User's attention** | Fully redirected to chat app | Partially redirected to side panel | Never leaves primary workflow | No user present |
 | **Initiation** | User must ask | User must ask | App acts proactively | Agent acts on schedule or trigger |
@@ -197,7 +197,7 @@ The interaction model itself changes: from **"user seeks out intelligence"** to 
 
 **After (2000s–now):** Red squiggles appear under your code *as you type*. The error is surfaced inline, in context, before you even finish the line. You never leave the editor. Background language servers (Roslyn, TypeScript LSP) continuously analyze your code.
 
-**Why this is the best parallel for chat AI:** The compiler interaction (write → submit → wait → read response → go apply it) is *structurally identical* to chat AI interaction — whether the chat is standalone (Tier 1) or a panel inside the editor (Tier 2). The shift to inline IDE errors is *structurally identical* to the shift from chat-based AI to ambient intelligence (Tier 3). Importantly, imagine if the "innovation" had been to embed the compiler terminal *inside* the editor as a side panel — still requiring you to hit compile, still listing errors in a separate pane, still making you find the line yourself. That's Tier 2: embedded chat. The actual innovation was eliminating the conversation entirely: red squiggles appear *as you type*, inline, in context. That's Tier 3. This is the single strongest historical parallel.
+**Why this is the best parallel for chat AI:** The compiler interaction (write → submit → wait → read response → go apply it) is *structurally identical* to chat AI interaction — whether the chat is standalone (Tier 1a) or a panel inside the editor (Tier 1b). The shift to inline IDE errors is *structurally identical* to the shift from chat-based AI to ambient intelligence (Tier 2). Importantly, imagine if the "innovation" had been to embed the compiler terminal *inside* the editor as a side panel — still requiring you to hit compile, still listing errors in a separate pane, still making you find the line yourself. That's Tier 1b: embedded chat. The actual innovation was eliminating the conversation entirely: red squiggles appear *as you type*, inline, in context. That's Tier 2. This is the single strongest historical parallel.
 
 ---
 
@@ -219,13 +219,13 @@ This parallel deserves special attention because it is **the most data-rich proo
 
 | Tier | Amazon Expression | Netflix Expression | Interaction Model |
 |------|-------------------|-------------------|-------------------|
-| **Tier 1: Standalone Search** | Go to Amazon.com, type what you want, browse results, buy | Go to Netflix, search for a specific title, watch it | User seeks product/content deliberately |
-| **Tier 2: Embedded Suggestions** | "Frequently Bought Together," "Customers Also Viewed" panels alongside search results | "Because You Watched X" row, genre carousels on homepage | Suggestions appear *alongside* user-initiated activity — still reactive to a user action |
-| **Tier 3: Proactive/Ambient** | Subscribe & Save auto-delivers before you run out; anticipatory shipping pre-positions inventory near you *before you order*; personalized homepage replaces search entirely | 80% of viewing comes from algorithmic recommendations, not search; personalized thumbnails, auto-play, curated "Top Picks For You" replace browsing entirely | Intelligence acts *before and instead of* user search — the platform knows what you need before you do |
+| **Tier 1a: Standalone Search** | Go to Amazon.com, type what you want, browse results, buy | Go to Netflix, search for a specific title, watch it | User seeks product/content deliberately |
+| **Tier 1b: Embedded Suggestions** | "Frequently Bought Together," "Customers Also Viewed" panels alongside search results | "Because You Watched X" row, genre carousels on homepage | Suggestions appear *alongside* user-initiated activity — still reactive to a user action |
+| **Tier 2: Proactive/Ambient** | Subscribe & Save auto-delivers before you run out; anticipatory shipping pre-positions inventory near you *before you order*; personalized homepage replaces search entirely | 80% of viewing comes from algorithmic recommendations, not search; personalized thumbnails, auto-play, curated "Top Picks For You" replace browsing entirely | Intelligence acts *before and instead of* user search — the platform knows what you need before you do |
 
-**The key insight:** Amazon didn't just put a recommendation panel next to the search bar (Tier 2). They made the *entire shopping experience* proactive (Tier 3). The homepage is personalized. Emails suggest products. Subscribe & Save eliminates the need to re-order. Amazon's 2013 anticipatory shipping patent (US8615473B2) literally pre-ships products to regional hubs *before you place an order*, based on predicted demand[^36]. The search bar still exists — but most revenue doesn't come from it anymore.
+**The key insight:** Amazon didn't just put a recommendation panel next to the search bar (Tier 1b). They made the *entire shopping experience* proactive (Tier 2). The homepage is personalized. Emails suggest products. Subscribe & Save eliminates the need to re-order. Amazon's 2013 anticipatory shipping patent (US8615473B2) literally pre-ships products to regional hubs *before you place an order*, based on predicted demand[^36]. The search bar still exists — but most revenue doesn't come from it anymore.
 
-Netflix didn't just add a "You Might Also Like" row (Tier 2). They rebuilt the *entire interface* around recommendation — personalized thumbnails, personalized row ordering, auto-play, curated collections. The search function exists but is a rounding error in engagement. The platform *is* the recommendation engine.
+Netflix didn't just add a "You Might Also Like" row (Tier 1b). They rebuilt the *entire interface* around recommendation — personalized thumbnails, personalized row ordering, auto-play, curated collections. The search function exists but is a rounding error in engagement. The platform *is* the recommendation engine.
 
 #### The Revenue and Engagement Data
 
@@ -251,7 +251,7 @@ The Amazon/Netflix progression is *structurally identical* to the chat AI transi
 | Amazon's homepage *is* the recommendation — personalized, proactive, no search required | Outlook auto-triages, priority-scores, drafts responses *before you open email* — no prompt required |
 | Subscribe & Save delivers *before you realize you need it* | AI schedules meetings, files reports, escalates risks *before you ask* |
 
-The e-commerce data proves that when platforms shift from "user searches" to "intelligence surfaces," engagement and revenue don't just increase — they *multiply*. **35% of Amazon's revenue and 80% of Netflix's viewing are the proof that Tier 3 ambient intelligence isn't just a better interaction model — it's a dramatically better business model.**
+The e-commerce data proves that when platforms shift from "user searches" to "intelligence surfaces," engagement and revenue don't just increase — they *multiply*. **35% of Amazon's revenue and 80% of Netflix's viewing are the proof that Tier 2 ambient intelligence isn't just a better interaction model — it's a dramatically better business model.**
 
 #### The Trust Gradient Shows Up Here Too
 
@@ -435,17 +435,17 @@ The most likely outcome is **not** that Outlook and Teams vanish, but that they 
 
 ### The Three Layers of the Post-Chat Stack
 
-Based on the research, the post-chat productivity world has three layers. Crucially, **embedded chat panes (Tier 2) belong in Layer 1**, not Layer 2 — they are a familiar app surface with a chat panel attached, not proactive intelligence.
+Based on the research, the post-chat productivity world has three layers. Crucially, **embedded chat panes (Tier 1b) belong in Layer 1**, not Layer 2 — they are a familiar app surface with a chat panel attached, not proactive intelligence.
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│  LAYER 3: AUTONOMOUS AGENTS (Tier 4)                     │
+│  LAYER 3: AUTONOMOUS AGENTS (Tier 3)                     │
 │  Work without user involvement. Agent-to-agent comms.    │
 │  Schedule meetings, process invoices, monitor KPIs.      │
 │  User is informed after the fact, or not at all.         │
 │  (Trust level: HIGH — only for proven, bounded tasks)    │
 ├─────────────────────────────────────────────────────────┤
-│  LAYER 2: PROACTIVE GUIDANCE & SUGGESTIONS (Tier 3)      │
+│  LAYER 2: PROACTIVE GUIDANCE & SUGGESTIONS (Tier 2)      │
 │  AI surfaces actions, drafts, recommendations in-flow.   │
 │  User approves, edits, or dismisses. One-tap decisions.  │
 │  Inline completions, smart routing, auto-triage.         │
@@ -457,7 +457,7 @@ Based on the research, the post-chat productivity world has three layers. Crucia
 │  Recognizable UI chrome. But content is AI-curated.      │
 │  Decision queues, not message lists. Action cards, not   │
 │  emails. AI briefings, not inbox zero.                   │
-│  INCLUDES embedded chat panes (Tier 2) — a chat panel    │
+│  INCLUDES embedded chat panes (Tier 1b) — a chat panel    │
 │  docked inside an app is still chat, not ambient AI.     │
 │  (Trust level: LOW — user still drives, AI assists)      │
 └─────────────────────────────────────────────────────────┘
@@ -555,7 +555,7 @@ Not everyone will agree with the thesis above. The strongest pushback will come 
 
 **What's right about this:** This is fair. Microsoft *is* moving exactly in the direction this paper describes. Copilot in 2026 is meaningfully more integrated than in 2024. The skeptic is correct that the trajectory is already underway within Microsoft's own product roadmap.
 
-**What it misses:** The objection conflates two fundamentally different kinds of embedding. A Copilot chat pane docked inside Outlook (Tier 2: embedded chat) is still chat — the user still stops, switches attention to the panel, types a prompt, reads a response, and goes back to their email. The interaction model hasn't changed; the address changed. What genuinely moves beyond chat are the Tier 3 features: meeting summaries that appear automatically, inline suggestions in Word, data insights that surface proactively in Excel, the Facilitator agent that joins meetings uninvited. *Those* represent the paradigm shift. But even in 2026, the Tier 2 chat pane remains the primary and most visible interaction surface for M365 Copilot — the Tier 3 ambient features are additive but secondary. More importantly, there is *no unified action surface* in M365 Copilot today. Actions generated across Outlook, Teams, and Word don't flow into a single prioritized view. That gap — the lifecycle and prioritization layer — is precisely what the WorkIQ Todo addresses. The skeptic is right that Microsoft is investing in Tier 3; the question is whether Tier 3 has overtaken Tier 2 as the primary experience yet. It hasn't.
+**What it misses:** The objection conflates two fundamentally different kinds of embedding. A Copilot chat pane docked inside Outlook (Tier 1b: embedded chat) is still chat — the user still stops, switches attention to the panel, types a prompt, reads a response, and goes back to their email. The interaction model hasn't changed; the address changed. What genuinely moves beyond chat are the Tier 2 features: meeting summaries that appear automatically, inline suggestions in Word, data insights that surface proactively in Excel, the Facilitator agent that joins meetings uninvited. *Those* represent the paradigm shift. But even in 2026, the Tier 1b chat pane remains the primary and most visible interaction surface for M365 Copilot — the Tier 2 ambient features are additive but secondary. More importantly, there is *no unified action surface* in M365 Copilot today. Actions generated across Outlook, Teams, and Word don't flow into a single prioritized view. That gap — the lifecycle and prioritization layer — is precisely what the WorkIQ Todo addresses. The skeptic is right that Microsoft is investing in Tier 2; the question is whether Tier 2 has overtaken Tier 1b as the primary experience yet. It hasn't.
 
 ### Objection 3: "Users love Copilot chat. Satisfaction scores are high. Adoption is growing."
 
@@ -645,8 +645,8 @@ This maps directly to the concept in your earlier market analysis: digital worke
 | Your Assertion | How Digital Workers Express It |
 |---------------|-------------------------------|
 | **Chat (Tiers 1-2) is transitional** | You don't chat with a colleague through a dedicated chat app or a sidebar — you @mention them in context, email them, invite them to meetings. Digital workers use *all* the same channels, not a separate or embedded chat interface. |
-| **Ambient intelligence (Tier 3) is the user-facing destination** | Digital workers *are* ambient intelligence personified. They route, suggest, flag, and act within Teams, Outlook, Calendar — making those apps smarter by their presence, not by bolting on a chat panel. |
-| **Autonomous agents (Tier 4) are the headless destination** | Digital workers can operate fully unattended — processing overnight, running on triggers, coordinating with other agents — making them a natural on-ramp to Tier 4 because organizations already know how to delegate to a "colleague." |
+| **Ambient intelligence (Tier 2) is the user-facing destination** | Digital workers *are* ambient intelligence personified. They route, suggest, flag, and act within Teams, Outlook, Calendar — making those apps smarter by their presence, not by bolting on a chat panel. |
+| **Autonomous agents (Tier 3) are the headless destination** | Digital workers can operate fully unattended — processing overnight, running on triggers, coordinating with other agents — making them a natural on-ramp to Tier 3 because organizations already know how to delegate to a "colleague." |
 | **Autonomy grows gradually** | The new-hire metaphor is the trust gradient made intuitive. Week 1: give them simple tasks, check every output. Month 3: they handle a whole workstream. Year 1: they own a domain. Everyone understands this progression — it's how you manage people. |
 
 ### The Skeuomorphic Trick
@@ -676,16 +676,16 @@ Digital workers are the **adoption accelerator** for the post-chat thesis. They 
 The progression looks like this:
 
 ```
-TODAY:          Chat with AI in a separate window (Tier 1: standalone chat)
+TODAY:          Chat with AI in a separate window (Tier 1a: standalone chat)
                         ↓
-CURRENT:        Chat pane embedded in apps (Tier 2: embedded chat — still chat)
+CURRENT:        Chat pane embedded in apps (Tier 1b: embedded chat — still chat)
                         ↓
-NEAR-TERM:      AI makes the apps themselves smarter (Tier 3: ambient intelligence
+NEAR-TERM:      AI makes the apps themselves smarter (Tier 2: ambient intelligence
                 — inline suggestions, completions, smart routing, proactive surfacing)
                         ↓
 CONCURRENT:     Digital workers on your team (most familiar paradigm — another person)
                         ↓
-CONCURRENT:     Headless automation — AI works while no one is watching (Tier 4:
+CONCURRENT:     Headless automation — AI works while no one is watching (Tier 3:
                 autonomous agents — scheduled, triggered, agent-to-agent workflows)
                         ↓
 MATURE STATE:   Mix of all — ambient intelligence for continuous app improvement,
@@ -726,8 +726,8 @@ For intellectual honesty, here are the strongest counterarguments:
 | Aspect of Your Assertion | Assessment | Confidence |
 |--------------------------|------------|------------|
 | Chat-based AI (standalone or embedded) is not the long-term dominant interface | **Strongly supported** | High |
-| The shift that matters is to ambient intelligence (Tier 3), not just embedded chat (Tier 2) | **Strongly supported** | High |
-| Autonomous/headless agents (Tier 4) are a distinct and higher trust threshold beyond ambient | **Strongly supported** | High |
+| The shift that matters is to ambient intelligence (Tier 2), not just embedded chat (Tier 1b) | **Strongly supported** | High |
+| Autonomous/headless agents (Tier 3) are a distinct and higher trust threshold beyond ambient | **Strongly supported** | High |
 | AI will integrate into existing interfaces and become proactive | **Strongly supported** | High |
 | This transition happens in 1-2 years | **Directionally correct, possibly optimistic** | Medium |
 | AI autonomy will grow gradually | **Strongly supported by research and data** | High |
@@ -740,10 +740,10 @@ For intellectual honesty, here are the strongest counterarguments:
 ## Confidence Assessment
 
 **High confidence:**
-- That chat — whether standalone (Tier 1) or embedded in app sidebars (Tier 2) — is transitional, and ambient intelligence (Tier 3: inline suggestions, completions, smart routing, proactive surfacing) is the user-facing destination (supported by unanimous industry leaders, Gartner/Forrester/McKinsey, NNG UX research, and declining chat engagement data)
-- That autonomous/headless agents (Tier 4) represent a distinct tier beyond ambient intelligence, requiring higher trust and governance, and already present in Copilot Studio autonomous agents and enterprise RPA platforms
+- That chat — whether standalone (Tier 1a) or embedded in app sidebars (Tier 1b) — is transitional, and ambient intelligence (Tier 2: inline suggestions, completions, smart routing, proactive surfacing) is the user-facing destination (supported by unanimous industry leaders, Gartner/Forrester/McKinsey, NNG UX research, and declining chat engagement data)
+- That autonomous/headless agents (Tier 3) represent a distinct tier beyond ambient intelligence, requiring higher trust and governance, and already present in Copilot Studio autonomous agents and enterprise RPA platforms
 - That trust/autonomy will grow gradually (supported by 20+ years of human-automation trust research and current enterprise adoption data)
-- That historical parallels (search, electricity, GPS, cameras, spell-check, compiler→IDE) are valid analogies — and all describe Tier 3 ambient integration, not Tier 2 embedded chat; Amazon's anticipatory shipping and Dash Replenishment are valid analogies for Tier 4
+- That historical parallels (search, electricity, GPS, cameras, spell-check, compiler→IDE) are valid analogies — and all describe Tier 2 ambient integration, not Tier 1b embedded chat; Amazon's anticipatory shipping and Dash Replenishment are valid analogies for Tier 3
 
 **Medium confidence:**
 - On the exact timeline (1-2 years vs. 3-5 years for mainstream)
@@ -840,9 +840,9 @@ For intellectual honesty, here are the strongest counterarguments:
 
 ## Appendix: GPU/AI Capacity Constraints and the Timeline to Viable Ambient Intelligence
 
-### The Core Constraint: Why Tier 3 Is Delayed
+### The Core Constraint: Why Tier 2 Is Delayed
 
-There is strong structural evidence that the delay in implementing ambient intelligence (Tier 3) is significantly driven by AI/GPU compute capacity constraints and the economics of speculative inference. The core tension: ambient AI requires **continuous, proactive inference** — monitoring context, generating suggestions, and acting before being asked — which costs **10x–100x more compute** than on-demand chat for the same number of users[^41][^42]. When GPU capacity is already strained by reactive (Tier 1–2) workloads, the economic case for speculatively burning compute on proactive features — many of which will be ignored — is very difficult to justify.
+There is strong structural evidence that the delay in implementing ambient intelligence (Tier 2) is significantly driven by AI/GPU compute capacity constraints and the economics of speculative inference. The core tension: ambient AI requires **continuous, proactive inference** — monitoring context, generating suggestions, and acting before being asked — which costs **10x–100x more compute** than on-demand chat for the same number of users[^41][^42]. When GPU capacity is already strained by reactive (Tier 1a–2) workloads, the economic case for speculatively burning compute on proactive features — many of which will be ignored — is very difficult to justify.
 
 ### The Compute Economics of Push vs. Pull AI
 
@@ -854,8 +854,8 @@ Consider the math for a hypothetical ambient Copilot in Outlook:
 
 | Mode | Inference calls/day | Cost/day/user | Annual cost (100K users) |
 |------|-------------------|---------------|--------------------------|
-| **Chat (Tier 2):** User sends ~10 prompts/day | 10 | ~$0.10–$0.30 | ~$3.6M–$10.8M |
-| **Ambient (Tier 3):** System monitors every email, calendar event, document | ~1,000+ | ~$10–$30 | ~$360M–$1.08B |
+| **Chat (Tier 1b):** User sends ~10 prompts/day | 10 | ~$0.10–$0.30 | ~$3.6M–$10.8M |
+| **Ambient (Tier 2):** System monitors every email, calendar event, document | ~1,000+ | ~$10–$30 | ~$360M–$1.08B |
 
 If 70–80% of ambient suggestions are ignored (consistent with existing proactive AI data — see below), the effective cost per useful suggestion rises by 3–5x on top of the volume multiplier.
 
@@ -875,7 +875,7 @@ For GitHub Copilot specifically, roughly 70% of all inference compute produces s
 
 When GPU capacity is scarce, platform operators must triage. The allocation logic strongly favors chat over ambient:
 
-| Factor | Chat (Tier 1-2) | Ambient (Tier 3) |
+| Factor | Chat (Tier 1a-2) | Ambient (Tier 2) |
 |--------|-----------------|-------------------|
 | **Inference trigger** | User-initiated (guaranteed attention) | System-initiated (speculative) |
 | **Utilization rate** | ~100% of inferences are seen by user | ~20-30% of suggestions are acted on |
@@ -909,7 +909,7 @@ As inference costs decline (from $20/million tokens in 2022 to ~$0.40 by late 20
 
 ### Forecasting: When Does Ambient AI Become Economically Viable?
 
-The critical question is not "Can we build Tier 3 features?" — the technology exists today. The question is: **"When can we afford to run them for everyone?"**
+The critical question is not "Can we build Tier 2 features?" — the technology exists today. The question is: **"When can we afford to run them for everyone?"**
 
 #### The Inference Cost Collapse
 
@@ -932,7 +932,7 @@ NVIDIA's hardware roadmap is the primary driver:
 
 If realized, this means a **100x reduction from Blackwell to Rubin** (Hopper to Rubin = ~10,000x).
 
-#### Mapping Cost Decline to Tier 3 Viability
+#### Mapping Cost Decline to Tier 2 Viability
 
 Using the Outlook ambient scenario from above (1,000 inference calls/day vs. 10 for chat):
 
@@ -943,32 +943,32 @@ Using the Outlook ambient scenario from above (1,000 inference calls/day vs. 10 
 | **2027** | $0.10–$0.30 | $3–$9 | ✅ **Yes** — ambient fits within $30/user/month with margin |
 | **2028** | $0.01–$0.03 | $0.30–$0.90 | ✅ **Trivial** — ambient is essentially free |
 
-**The crossover point for broad Tier 3 viability is approximately 2027**, when ambient inference costs drop below the $30/user/month price point that Microsoft already charges for Copilot. By 2028, ambient inference becomes economically trivial — cheap enough that "wasted" speculative inference doesn't matter.
+**The crossover point for broad Tier 2 viability is approximately 2027**, when ambient inference costs drop below the $30/user/month price point that Microsoft already charges for Copilot. By 2028, ambient inference becomes economically trivial — cheap enough that "wasted" speculative inference doesn't matter.
 
 #### But: The Jevons Caveat
 
-This projection assumes ambient workloads can access the capacity freed by cost reductions. In practice, Jevons Paradox means new demand (more users, more features, Tier 4 autonomous workloads, multi-agent systems) will absorb freed capacity. The actual crossover may shift 6–12 months later than pure cost curves suggest. However, the combination of:
+This projection assumes ambient workloads can access the capacity freed by cost reductions. In practice, Jevons Paradox means new demand (more users, more features, Tier 3 autonomous workloads, multi-agent systems) will absorb freed capacity. The actual crossover may shift 6–12 months later than pure cost curves suggest. However, the combination of:
 
 1. **Hardware improvements** (Blackwell → Rubin → Feynman delivering 100x+ over 3 years)
 2. **Software optimization** (smarter triggering, tiered models, event-based rather than polling-based inference)
 3. **On-device inference maturation** (Apple Neural Engine, Qualcomm Snapdragon X, shifting ambient workloads off cloud)
 4. **Energy infrastructure expansion** (Microsoft, Google, Amazon all investing $50B+ annually in data center capacity)
 
-...makes a **2027–2028 window for broad enterprise Tier 3 deployment** highly defensible.
+...makes a **2027–2028 window for broad enterprise Tier 2 deployment** highly defensible.
 
 #### What This Means for Each Tier's Timeline
 
 | Tier | Economically viable when? | Key prerequisite |
 |------|--------------------------|------------------|
-| **Tier 2 (Embedded Chat)** | **Now** (2025–2026) | Already viable at current inference costs |
-| **Tier 3 (Ambient Intelligence)** — basic (inline suggestions, smart sorting) | **2026–2027** | ~10x cost reduction + smarter triggering |
-| **Tier 3 (Ambient Intelligence)** — full (proactive drafts, relationship management, predictive calendar) | **2027–2028** | ~100x cost reduction + tiered model architectures |
-| **Tier 4 (Autonomous/Headless)** — narrow scope | **2027** | Policy frameworks + 10x cost reduction |
-| **Tier 4 (Autonomous/Headless)** — broad enterprise | **2028–2029** | ~1000x cost reduction + governance maturity + trust calibration |
+| **Tier 1b (Embedded Chat)** | **Now** (2025–2026) | Already viable at current inference costs |
+| **Tier 2 (Ambient Intelligence)** — basic (inline suggestions, smart sorting) | **2026–2027** | ~10x cost reduction + smarter triggering |
+| **Tier 2 (Ambient Intelligence)** — full (proactive drafts, relationship management, predictive calendar) | **2027–2028** | ~100x cost reduction + tiered model architectures |
+| **Tier 3 (Autonomous/Headless)** — narrow scope | **2027** | Policy frameworks + 10x cost reduction |
+| **Tier 3 (Autonomous/Headless)** — broad enterprise | **2028–2029** | ~1000x cost reduction + governance maturity + trust calibration |
 
 ### What Would Unlock Ambient AI at Scale
 
-The evidence suggests six prerequisites for broad Tier 3 deployment:
+The evidence suggests six prerequisites for broad Tier 2 deployment:
 
 1. **Inference cost must fall another 10–100x** — making "wasted" speculative inference economically trivial
 2. **Smarter triggering** — moving from polling-based to event-based ambient inference, with value-estimation models that decide *whether* to generate a suggestion before burning compute
@@ -985,8 +985,8 @@ The evidence suggests six prerequisites for broad Tier 3 deployment:
 | GPU/energy capacity constrains AI feature rollout | **High** | Direct statements from Nadella, Microsoft capex data |
 | 60–80% of proactive AI suggestions are ignored | **High** | Published acceptance rates for GitHub Copilot, Gmail features |
 | Inference costs declining ~10x/year | **High** | Documented across 2022–2026 with hardware validation |
-| Tier 3 becomes broadly viable in 2027–2028 | **Medium-High** | Extrapolation from verified cost curves; subject to Jevons Paradox and demand growth |
-| Capacity constraints specifically delay Tier 3 vs Tier 2 | **Medium-High** | Inferred from pricing structures, throttling limits, and rollout patterns; no vendor has stated this explicitly |
+| Tier 2 becomes broadly viable in 2027–2028 | **Medium-High** | Extrapolation from verified cost curves; subject to Jevons Paradox and demand growth |
+| Capacity constraints specifically delay Tier 2 vs Tier 1b | **Medium-High** | Inferred from pricing structures, throttling limits, and rollout patterns; no vendor has stated this explicitly |
 | Apple's Siri delays are partly compute-driven | **Medium** | Bloomberg reporting + on-device constraint analysis; Apple cites "reliability" not "compute" publicly |
 
 **Key caveat:** No major vendor has publicly said "we delayed ambient AI features because of GPU capacity." The evidence is structural — the economics, throttling systems, rollout patterns, and capacity allocations all point in the same direction. The absence of explicit statements may itself be strategic: admitting capacity-driven limitations would undermine the AI narrative.
@@ -1039,7 +1039,7 @@ The evidence suggests six prerequisites for broad Tier 3 deployment:
 
 ## Appendix B: The 3–4 Year AI Evolution of Microsoft To Do and Outlook (2026–2029)
 
-This appendix applies the four-tier taxonomy to **Microsoft To Do** and **Outlook** specifically, imagining their year-by-year evolution as ambient intelligence and autonomous capabilities mature — and as the inference economics described in Appendix A unlock each tier.
+This appendix applies the AI integration taxonomy to **Microsoft To Do** and **Outlook** specifically, imagining their year-by-year evolution as ambient intelligence and autonomous capabilities mature — and as the inference economics described in Appendix A unlock each tier.
 
 ### The Starting Point: Where We Are Today (Mid-2026)
 
@@ -1047,8 +1047,8 @@ This appendix applies the four-tier taxonomy to **Microsoft To Do** and **Outloo
 
 | Feature | Tier | Status |
 |---------|------|--------|
-| "My Day" with intelligent suggestions | Early Tier 3 | Suggests tasks based on deadlines, overdue items, flagged emails[^61] |
-| Copilot in Planner/To Do | Tier 2 | Chat-based: "Help me plan my week"[^62] |
+| "My Day" with intelligent suggestions | Early Tier 2 | Suggests tasks based on deadlines, overdue items, flagged emails[^61] |
+| Copilot in Planner/To Do | Tier 1b | Chat-based: "Help me plan my week"[^62] |
 | Cross-app task sync (Outlook flags → To Do) | Infrastructure | Tasks flow between apps but require manual triage[^63] |
 | Manual task creation, lists, due dates | Tier 0 (pre-AI) | Still the primary interaction model |
 
@@ -1056,13 +1056,13 @@ This appendix applies the four-tier taxonomy to **Microsoft To Do** and **Outloo
 
 | Feature | Tier | Status |
 |---------|------|--------|
-| Copilot sidebar (summarize, draft, coach) | Tier 2 | Chat pane — user must invoke, read, apply[^64] |
-| Focused Inbox | Early Tier 3 | Auto-sorts important vs. other mail[^65] |
-| Meeting summaries in Teams/Outlook | Tier 3 | Appears without prompting after meetings[^66] |
-| Schedule Send, suggested reply snippets | Early Tier 3 | Limited ambient features[^65] |
+| Copilot sidebar (summarize, draft, coach) | Tier 1b | Chat pane — user must invoke, read, apply[^64] |
+| Focused Inbox | Early Tier 2 | Auto-sorts important vs. other mail[^65] |
+| Meeting summaries in Teams/Outlook | Tier 2 | Appears without prompting after meetings[^66] |
+| Schedule Send, suggested reply snippets | Early Tier 2 | Limited ambient features[^65] |
 | Auto-categorization | Pre-AI | Basic rules, minimal ML |
 
-**Key observation:** Both apps have a *visible* Tier 2 layer (chat pane) and a *quiet* Tier 3 layer (My Day suggestions, Focused Inbox). The Tier 3 features are underloved and underpowered relative to where the technology can go. The Tier 2 chat pane gets the marketing attention. The Tier 3 features do the actual work.
+**Key observation:** Both apps have a *visible* Tier 1b layer (chat pane) and a *quiet* Tier 2 layer (My Day suggestions, Focused Inbox). The Tier 2 features are underloved and underpowered relative to where the technology can go. The Tier 1b chat pane gets the marketing attention. The Tier 2 features do the actual work.
 
 ---
 
@@ -1090,7 +1090,7 @@ This appendix applies the four-tier taxonomy to **Microsoft To Do** and **Outloo
 - **Smart scheduling goes proactive:** When someone says "Let's find time next week," Outlook doesn't wait for you to use FindTime. It proposes 3 options in the reply draft based on both calendars, your preferences (no meetings before 9am), and travel time. The scheduling assistant has become ambient — it's not a tool you invoke, it's built into every scheduling-adjacent email.
 - **The Copilot pane still exists** but is used primarily for complex, multi-step requests ("Summarize all correspondence with Contoso from the last quarter"). Routine intelligence has moved inline.
 
-**Tier 3 milestone reached:** The app's intelligence is now the *primary* experience. Chat is the fallback.
+**Tier 2 milestone reached:** The app's intelligence is now the *primary* experience. Chat is the fallback.
 
 ---
 
@@ -1116,7 +1116,7 @@ This appendix applies the four-tier taxonomy to **Microsoft To Do** and **Outloo
 - **Calendar becomes predictive:** Outlook blocks "focus time" around your deep-work tasks from To Do. It auto-declines low-priority meetings that conflict with high-priority work. It proposes agenda items for upcoming meetings based on open threads. The calendar isn't a tool — it's an operating plan that adapts in real time.
 - **Cross-app integration deepens:** The line between To Do, Outlook, and Teams blurs. A task created from an email thread in Outlook triggers a Teams channel update, which feeds back into To Do's priority scoring. The apps are becoming *views* on a single intelligence layer, not separate products.
 
-**Tier 3 → Tier 4 boundary emerges:** Some actions are taken without human review. Trust thresholds determine which.
+**Tier 2 → Tier 3 boundary emerges:** Some actions are taken without human review. Trust thresholds determine which.
 
 ---
 
@@ -1145,11 +1145,11 @@ This appendix applies the four-tier taxonomy to **Microsoft To Do** and **Outloo
 
 ---
 
-### The Four-Tier Progression: Summary Timeline
+### Tier Progression: Summary Timeline
 
 #### Microsoft To Do
 
-| Year | Tier 2 (Chat) | Tier 3 (Ambient) | Tier 4 (Autonomous) |
+| Year | Tier 1b (Chat) | Tier 2 (Ambient) | Tier 3 (Autonomous) |
 |------|---------------|-------------------|---------------------|
 | **2026** | "Help me plan my day" | My Day suggestions, deadline nudges | — |
 | **2027** | Declining use | Auto-populated daily plan, auto-extracted tasks, priority scoring | — |
@@ -1158,7 +1158,7 @@ This appendix applies the four-tier taxonomy to **Microsoft To Do** and **Outloo
 
 #### Microsoft Outlook
 
-| Year | Tier 2 (Chat) | Tier 3 (Ambient) | Tier 4 (Autonomous) |
+| Year | Tier 1b (Chat) | Tier 2 (Ambient) | Tier 3 (Autonomous) |
 |------|---------------|-------------------|---------------------|
 | **2026** | Copilot pane: summarize, draft, coach | Focused Inbox, meeting summaries | — |
 | **2027** | Complex queries only | Pre-triaged inbox, inline drafts, proactive scheduling | — |
@@ -1186,8 +1186,8 @@ This appendix applies the four-tier taxonomy to **Microsoft To Do** and **Outloo
 
 This evolution is **gated by the capacity constraints and cost curves** detailed in Appendix A:
 
-- **2027 features (Tier 3)** require ~10x more inference than today's Tier 2 chat. Per Appendix A's forecast, ambient inference fits within the $30/user/month price point by 2027 as costs decline to ~$0.10–$0.30/user/day. These features roll out first to premium/enterprise users and expand as costs fall further.
-- **2028–2029 features (Tier 4)** require always-on, multi-agent inference that could be 100x current costs per user. By 2028, inference costs become economically trivial (~$0.01–$0.03/user/day), unlocking autonomous workloads at scale.
+- **2027 features (Tier 2)** require ~10x more inference than today's Tier 1b chat. Per Appendix A's forecast, ambient inference fits within the $30/user/month price point by 2027 as costs decline to ~$0.10–$0.30/user/day. These features roll out first to premium/enterprise users and expand as costs fall further.
+- **2028–2029 features (Tier 3)** require always-on, multi-agent inference that could be 100x current costs per user. By 2028, inference costs become economically trivial (~$0.01–$0.03/user/day), unlocking autonomous workloads at scale.
 - **The "wasted inference" problem** is particularly acute for To Do and Outlook ambient features: if 70% of proactive suggestions are ignored (as GitHub Copilot data suggests[^44]), platforms must develop smarter triggering — generating suggestions only when the expected value justifies the compute cost.
 
 The evolution described here is *technically feasible today* for small-scale, high-value scenarios. The challenge is making it *economically viable* at enterprise scale. That's the real 3–4 year timeline: not building the features, but making the inference cheap enough to run them for everyone.
