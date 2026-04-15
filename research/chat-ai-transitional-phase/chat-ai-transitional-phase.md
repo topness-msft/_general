@@ -1034,3 +1034,192 @@ The evidence suggests six prerequisites for broad Tier 3 deployment:
 [^59]: [Barrack AI — NVIDIA Rubin at GTC 2026: Full Technical Breakdown](https://blog.barrack.ai/nvidia-rubin-specs-architecture-2026/); [Spheron — Rubin vs Blackwell vs Hopper: NVIDIA GPU Architecture Comparison](https://www.spheron.network/blog/nvidia-rubin-vs-blackwell-vs-hopper/)
 
 [^60]: [StorageReview — NVIDIA Unveils Roadmap at AI Infra Summit: From Blackwell Ultra to Vera Rubin](https://www.storagereview.com/news/nvidia-unveils-roadmap-at-ai-infra-summit-from-blackwell-ultra-to-vera-rubin-cpx-architecture)
+
+---
+
+## Appendix B: The 3–4 Year AI Evolution of Microsoft To Do and Outlook (2026–2029)
+
+This appendix applies the four-tier taxonomy to **Microsoft To Do** and **Outlook** specifically, imagining their year-by-year evolution as ambient intelligence and autonomous capabilities mature — and as the inference economics described in Appendix A unlock each tier.
+
+### The Starting Point: Where We Are Today (Mid-2026)
+
+#### Microsoft To Do — Today
+
+| Feature | Tier | Status |
+|---------|------|--------|
+| "My Day" with intelligent suggestions | Early Tier 3 | Suggests tasks based on deadlines, overdue items, flagged emails[^61] |
+| Copilot in Planner/To Do | Tier 2 | Chat-based: "Help me plan my week"[^62] |
+| Cross-app task sync (Outlook flags → To Do) | Infrastructure | Tasks flow between apps but require manual triage[^63] |
+| Manual task creation, lists, due dates | Tier 0 (pre-AI) | Still the primary interaction model |
+
+#### Outlook — Today
+
+| Feature | Tier | Status |
+|---------|------|--------|
+| Copilot sidebar (summarize, draft, coach) | Tier 2 | Chat pane — user must invoke, read, apply[^64] |
+| Focused Inbox | Early Tier 3 | Auto-sorts important vs. other mail[^65] |
+| Meeting summaries in Teams/Outlook | Tier 3 | Appears without prompting after meetings[^66] |
+| Schedule Send, suggested reply snippets | Early Tier 3 | Limited ambient features[^65] |
+| Auto-categorization | Pre-AI | Basic rules, minimal ML |
+
+**Key observation:** Both apps have a *visible* Tier 2 layer (chat pane) and a *quiet* Tier 3 layer (My Day suggestions, Focused Inbox). The Tier 3 features are underloved and underpowered relative to where the technology can go. The Tier 2 chat pane gets the marketing attention. The Tier 3 features do the actual work.
+
+---
+
+### Year 1: 2026–2027 — "The App Starts Thinking"
+
+**Theme:** Ambient intelligence becomes the primary value layer. Chat pane usage declines as the app itself gets smarter.
+
+#### To Do in 2027
+
+**"My Day" becomes "My Day, Planned For Me"**
+
+- **Auto-populated daily plan:** Every morning, To Do presents a fully built day — not just suggestions to review, but a sequenced plan with time blocks. It considers your calendar, energy patterns (you do deep work in the morning), task dependencies, and deadlines. You can adjust, but the default is good enough that most users just go.[^67]
+- **Tasks extracted automatically from everywhere:** Emails ("Can you review this by Friday?"), Teams messages ("Let's circle back on the proposal"), meeting transcripts ("Action item: Phil to send the analysis") — all become tasks automatically, with assignee, deadline, and context link. No human triage needed.[^68]
+- **Priority scoring replaces manual flagging:** Every task gets a computed priority score based on deadline proximity, sender importance, project criticality, and your historical completion patterns. The ⭐ flag becomes decorative — the AI's scoring is what drives the sort order.
+- **Completion predictions:** "You have 7 tasks today but historically complete 4–5. I've deprioritized these 2 to tomorrow." The app manages expectations, not just lists.
+
+**The chat pane in To Do becomes nearly unused.** Why ask "What should I work on?" when the app already shows you.
+
+#### Outlook in 2027
+
+**"Inbox Zero" becomes the default, not the aspiration**
+
+- **Proactive triage before you open the app:** By the time you open Outlook in the morning, your inbox has been pre-sorted into actionable buckets: "Needs your reply" (with draft replies attached), "FYI only" (auto-archived with summary), "Delegated" (forwarded to the right person with context), "Scheduled" (meetings auto-accepted or flagged for conflict). You review decisions, not emails.[^69]
+- **Inline draft replies:** Instead of clicking "Reply" and staring at a blank compose window, every email that likely needs a response already has a draft attached. Not a generic "Thanks!" — a contextual draft that references previous threads, attached documents, and your communication style. You edit and send, or just send.[^70]
+- **Smart scheduling goes proactive:** When someone says "Let's find time next week," Outlook doesn't wait for you to use FindTime. It proposes 3 options in the reply draft based on both calendars, your preferences (no meetings before 9am), and travel time. The scheduling assistant has become ambient — it's not a tool you invoke, it's built into every scheduling-adjacent email.
+- **The Copilot pane still exists** but is used primarily for complex, multi-step requests ("Summarize all correspondence with Contoso from the last quarter"). Routine intelligence has moved inline.
+
+**Tier 3 milestone reached:** The app's intelligence is now the *primary* experience. Chat is the fallback.
+
+---
+
+### Year 2: 2027–2028 — "The App Starts Acting"
+
+**Theme:** The boundary between "showing you what to do" and "doing it for you" begins to blur. Human-in-the-loop becomes human-on-the-loop.
+
+#### To Do in 2028
+
+**The task list becomes a delegation dashboard**
+
+- **Auto-completion of routine tasks:** Recurring tasks that follow a pattern (weekly status report, monthly expense submission, daily standup notes) start being *done* by agents, not just *listed*. The status report drafts itself from your week's activity. The expense report pulls from your receipts and calendar. The standup notes compile from your git commits and completed tasks. Your job is to review and approve, not create.[^71]
+- **Cross-person task orchestration:** When you complete a task that unblocks someone else, To Do notifies them and updates their plan. When a dependency is blocked, the system proactively flags the blocker and suggests escalation. Task management becomes a *system*, not a personal list.
+- **Delegation by intent:** "I need a competitive analysis of Contoso's Q3 results" becomes a task that doesn't just sit in your list — it's assigned to a Copilot Studio agent that researches, drafts, and presents a summary for your review. The task item becomes a *contract with an agent*, not a reminder to yourself.
+- **The "list" metaphor starts breaking:** Power users stop thinking in terms of tasks and start thinking in terms of *outcomes*. "Ship the feature" is a node in a graph that the system decomposes, schedules, delegates, and tracks.
+
+#### Outlook in 2028
+
+**Email becomes a feed you curate, not a queue you process**
+
+- **Autonomous email handling for low-stakes correspondence:** Meeting confirmations, newsletter digests, vendor follow-ups, receipt acknowledgments — handled entirely by the agent. You see a daily digest: "I handled 47 emails today. 3 need your attention." The 3 are real decisions. The 47 were noise that no longer reaches you.[^72]
+- **Proactive relationship management:** Outlook notices you haven't contacted a key client in 3 weeks. It drafts a check-in email with relevant context (their last order, your last meeting, any open issues). You didn't ask. The app is managing your relationships, not just your inbox.
+- **Calendar becomes predictive:** Outlook blocks "focus time" around your deep-work tasks from To Do. It auto-declines low-priority meetings that conflict with high-priority work. It proposes agenda items for upcoming meetings based on open threads. The calendar isn't a tool — it's an operating plan that adapts in real time.
+- **Cross-app integration deepens:** The line between To Do, Outlook, and Teams blurs. A task created from an email thread in Outlook triggers a Teams channel update, which feeds back into To Do's priority scoring. The apps are becoming *views* on a single intelligence layer, not separate products.
+
+**Tier 3 → Tier 4 boundary emerges:** Some actions are taken without human review. Trust thresholds determine which.
+
+---
+
+### Year 3: 2028–2029 — "The App Becomes Your Chief of Staff"
+
+**Theme:** The apps dissolve into an orchestration layer. The *interface* is what remains for human judgment calls. Everything else is handled.
+
+#### To Do in 2029
+
+**To Do is no longer a "to-do app" — it's a personal operating system**
+
+- **Task creation is mostly autonomous:** ~70% of tasks are created by agents observing your commitments across email, chat, meetings, documents, and external systems. You create tasks only for novel personal goals.[^73]
+- **Task completion is partly autonomous:** Routine and formulaic tasks (data gathering, report generation, scheduling, follow-up emails, status updates) are completed by agents. Your task list shows *outcomes delivered* alongside *decisions needed*. The ratio shifts from 90/10 (you do / agent does) to 40/60.
+- **The weekly review is AI-led:** Every Monday, your "chief of staff" agent presents: what was accomplished, what slipped, what's coming, what needs reprioritization. You make 5–10 decisions. The rest is handled.
+- **OKR and goal tracking is embedded:** Long-term goals decompose into weekly milestones that automatically populate your plan. Progress is tracked against actuals. The system tells you "You're behind on Q3 OKR #2 — shall I reschedule this week's plan to catch up?"
+- **Multi-agent coordination:** Your personal agent coordinates with your team's agents. "Phil's To Do agent" negotiates with "Sarah's To Do agent" about meeting times, deliverable handoffs, and priority conflicts. The calendar invite you receive is the *output* of a machine-to-machine negotiation, not a human-to-human scheduling dance.[^74]
+
+#### Outlook in 2029
+
+**Outlook is an executive briefing, not a mailbox**
+
+- **The inbox concept fades:** Instead of a chronological list of messages, Outlook presents a *situational dashboard*: "Here's what's happening across your world." Email, Teams messages, calendar events, task updates, and external signals (news about your clients, market data) are synthesized into a briefing. Individual emails still exist for audit purposes, but you rarely look at them.
+- **Communication is agent-mediated:** When you need to communicate, you express intent: "Tell the Contoso team we need to push the deadline to next month and offer a 10% discount for the delay." The agent drafts the appropriate emails (formal to the executive, casual to your internal team, updated timeline to the PM), routes them for review (or sends directly if within your trust threshold), and updates the relevant CRM and project records.
+- **Autonomous correspondence:** For defined categories (vendor management, meeting logistics, routine approvals, acknowledgments), the agent handles the full loop. You set policies: "Auto-approve travel under $500. Route anything from the CEO to me immediately. Handle newsletter subscriptions without bothering me." The email system becomes a *policy engine* with you as the executive, not the operator.[^72]
+- **Proactive intelligence becomes the norm:** Outlook surfaces insights you didn't know you needed: "The Contoso deal is at risk — their CFO's tone has shifted negative over the last 3 emails." "You have a conflict between your Q3 review and the board prep — I recommend rescheduling the Q3 review since the board prep has higher organizational impact."
+
+---
+
+### The Four-Tier Progression: Summary Timeline
+
+#### Microsoft To Do
+
+| Year | Tier 2 (Chat) | Tier 3 (Ambient) | Tier 4 (Autonomous) |
+|------|---------------|-------------------|---------------------|
+| **2026** | "Help me plan my day" | My Day suggestions, deadline nudges | — |
+| **2027** | Declining use | Auto-populated daily plan, auto-extracted tasks, priority scoring | — |
+| **2028** | Rare/specialized | Task orchestration, delegation to agents | Routine task auto-completion, cross-person coordination |
+| **2029** | Vestigial | Background intelligence layer | 60%+ of tasks created and many completed autonomously |
+
+#### Microsoft Outlook
+
+| Year | Tier 2 (Chat) | Tier 3 (Ambient) | Tier 4 (Autonomous) |
+|------|---------------|-------------------|---------------------|
+| **2026** | Copilot pane: summarize, draft, coach | Focused Inbox, meeting summaries | — |
+| **2027** | Complex queries only | Pre-triaged inbox, inline drafts, proactive scheduling | — |
+| **2028** | Specialized research | Feed-based curation, relationship management, predictive calendar | Low-stakes email handling, auto-decline/accept |
+| **2029** | Edge cases only | Situational dashboard replaces inbox | Agent-mediated communication, policy-based autonomous correspondence |
+
+---
+
+### What Dies, What Transforms, What's Born
+
+| Concept | 2026 | 2029 |
+|---------|------|------|
+| **The inbox** | A queue you process | A briefing you review |
+| **The task list** | Items you created and track | Outcomes your agents deliver and decisions you make |
+| **Email composition** | You write emails | You express intent; agents compose |
+| **Scheduling** | You use a tool to find times | Agents negotiate on your behalf |
+| **Priority setting** | You flag and sort | AI scores and sequences; you override |
+| **The Copilot chat pane** | Primary AI interface | Vestigial — used for novel/complex queries |
+| **The weekly review** | You look at your list | Your chief-of-staff agent presents a briefing |
+| **The "app"** | A tool you use | A view on an intelligence layer |
+
+---
+
+### Mapping to Inference Economics (from Appendix A)
+
+This evolution is **gated by the capacity constraints and cost curves** detailed in Appendix A:
+
+- **2027 features (Tier 3)** require ~10x more inference than today's Tier 2 chat. Per Appendix A's forecast, ambient inference fits within the $30/user/month price point by 2027 as costs decline to ~$0.10–$0.30/user/day. These features roll out first to premium/enterprise users and expand as costs fall further.
+- **2028–2029 features (Tier 4)** require always-on, multi-agent inference that could be 100x current costs per user. By 2028, inference costs become economically trivial (~$0.01–$0.03/user/day), unlocking autonomous workloads at scale.
+- **The "wasted inference" problem** is particularly acute for To Do and Outlook ambient features: if 70% of proactive suggestions are ignored (as GitHub Copilot data suggests[^44]), platforms must develop smarter triggering — generating suggestions only when the expected value justifies the compute cost.
+
+The evolution described here is *technically feasible today* for small-scale, high-value scenarios. The challenge is making it *economically viable* at enterprise scale. That's the real 3–4 year timeline: not building the features, but making the inference cheap enough to run them for everyone.
+
+---
+
+### Appendix B Footnotes
+
+[^61]: [Microsoft Support — My Day and Suggestions](https://support.microsoft.com/en-us/office/my-day-and-suggestions-fc09a1b9-0854-4906-b166-f480ee97a139)
+
+[^62]: [Code Creators — Copilot in Microsoft Planner & To Do](https://www.codecreators.ca/copilot-in-microsoft-planner-to-do-smarter-task-management-with-ai/)
+
+[^63]: [Microsoft Tech Community — Plan your day with My Day in To Do](https://techcommunity.microsoft.com/blog/to-doblog/focus-on-what-matters-with-ai-in-to-do/2052607)
+
+[^64]: [TechSpot — Microsoft Outlook is getting reimagined for the AI era](https://www.techspot.com/news/110007-microsoft-reimagines-outlook-ai-era-under-new-leadership.html)
+
+[^65]: [Microsoft 365 Roadmap 2025–26 — Windows Forum](https://windowsforum.com/threads/microsoft-365-roadmap-2025-26-copilot-agents-edge-ai-excel-ga-governance.389265/)
+
+[^66]: [The Outpost — Microsoft Unveils Major AI Upgrades at Build 2025](https://theoutpost.ai/news-story/microsoft-unveils-ai-powered-upgrades-to-outlook-and-365-suite-at-build-2025-15576/)
+
+[^67]: [SentiSight — Microsoft Copilot 2026: AI Agents & Autonomous Features](https://www.sentisight.ai/what-expect-from-microsoft-copilot-2026/)
+
+[^68]: [TechRepublic — Microsoft 2026 Product Plans and AI Strategy](https://www.techrepublic.com/article/news-microsoft-2026-product-plans/)
+
+[^69]: [Kingy AI — Inside Microsoft's AI-Powered Outlook Transformation](https://kingy.ai/news/microsoft-outlook-ai-overhaul-future-of-email/)
+
+[^70]: [WebProNews — Microsoft Revamps Outlook with AI Copilot](https://www.webpronews.com/microsoft-revamps-outlook-with-ai-copilot-for-smarter-productivity/)
+
+[^71]: [Coworker AI — Agent Workflows Explained](https://coworker.ai/blog/agent-workflows); [Taskade — Autonomous Task Management](https://www.taskade.com/blog/autonomous-task-management)
+
+[^72]: [B-TA AI — Microsoft Rebuilds Outlook as an AI-First Assistant](https://www.b-ta.ai/blog/microsoft_rebuilds_outlook_ai_first_assistant_what_it_means_for_workflows)
+
+[^73]: [Cerebraix — The Rise of Autonomous Agents](https://cerebraix.com/magazine/article/the-rise-of-autonomous-agents-what-happens-when-ai-starts-executing); Gartner: 60% of digital tasks handled by agents by 2028
+
+[^74]: [MIT Sloan — Agentic AI Explained](https://mitsloan.mit.edu/ideas-made-to-matter/agentic-ai-explained)
