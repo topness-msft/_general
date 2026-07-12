@@ -24,3 +24,29 @@ The probe:
 Build and push the image, then run disposable machines from at least two
 regions. Proceed to an MCP only when at least three fixtures return valid
 `SLOTS_FOUND` or `NO_SLOTS` responses repeatedly from Fly.
+
+Always disable machine restarts because a nonzero probe exit is an expected
+diagnostic result:
+
+```powershell
+fly machine run <image> --app pht-opentable-spike --region iad --restart no
+```
+
+## Result: passed
+
+On 2026-07-12, image
+`registry.fly.io/pht-opentable-spike:deployment-01KXBMXDEJW7SK17X3S5PMEFMX`
+was run twice from IAD, ORD, and SJC.
+
+| Region | Run 1 | Run 2 |
+|---|---|---|
+| IAD | 3/3 valid | 3/3 valid |
+| ORD | 3/3 valid | 3/3 valid |
+| SJC | 3/3 valid | GraphQL 403 |
+
+IAD and ORD returned consistent slot hashes and plausible availability for all
+fixtures. SJC demonstrated that GraphQL blocking remains probabilistic even
+when bootstrap and CSRF acquisition succeed.
+
+The future MCP should prefer IAD, retain bounded retries, and return an explicit
+`provider_unavailable` result rather than interpreting a 403 as no availability.
