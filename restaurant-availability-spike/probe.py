@@ -17,11 +17,16 @@ NO_SLOTS = "NO_SLOTS"
 UPSTREAM_CHANGED = "UPSTREAM_CHANGED"
 HTTP_ERROR = "HTTP_ERROR"
 NETWORK_ERROR = "NETWORK_ERROR"
+RESULTS_FOUND = "RESULTS_FOUND"
+NO_RESULTS = "NO_RESULTS"
 
 ORIGIN = "https://www.opentable.com"
 BOOTSTRAP_PATH = "/restaurant/profile/100"
 GQL_PATH = "/dapi/fe/gql"
 DEFAULT_QUERY_HASH = "436770d3236803f6bb7e8bdfc7b617a582026235c1a6af52297ab63fed08aa0c"
+DEFAULT_AUTOCOMPLETE_HASH = "fe1d118abd4c227750693027c2414d43014c2493f64f49bcef5a65274ce9c3c3"
+RESY_ORIGIN = "https://api.resy.com"
+RESY_PUBLIC_API_KEY = "VbWk7s3L4KiK5fzlO7JD3Q5EYolJI7n5"
 CHALLENGE_MARKERS = (
     "access denied",
     "just a moment",
@@ -160,6 +165,131 @@ def build_availability_payload(
     }
 
 
+def build_autocomplete_payload(
+    term: str,
+    latitude: float,
+    longitude: float,
+    query_hash: str,
+) -> dict[str, Any]:
+    return {
+        "operationName": "Autocomplete",
+        "variables": {
+            "term": term,
+            "latitude": latitude,
+            "longitude": longitude,
+            "useNewVersion": True,
+        },
+        "extensions": {
+            "persistedQuery": {
+                "version": 1,
+                "sha256Hash": query_hash,
+            }
+        },
+    }
+
+
+def extract_resy_results(body: Any, city: str | None = None) -> list[dict[str, Any]]:
+    try:
+        hits = body["search"]["hits"]
+    except (KeyError, TypeError):
+        return []
+    if not isinstance(hits, list):
+        return []
+
+    city_lower = city.casefold() if city else None
+    results: list[dict[str, Any]] = []
+    for hit in hits:
+        if not isinstance(hit, dict):
+            continue
+        locality = hit.get("locality") or (hit.get("location") or {}).get("name")
+        if city_lower and (not isinstance(locality, str) or city_lower not in locality.casefold()):
+            continue
+        resy_id = (hit.get("id") or {}).get("resy")
+        name = hit.get("name")
+        if resy_id is None or not isinstance(name, str):
+            continue
+        geoloc = hit.get("_geoloc") or {}
+        contact = hit.get("contact") or {}
+        results.append(
+            {
+                "provider_id": f"resy:{resy_id}",
+                "name": name,
+                "locality": locality,
+                "neighborhood": hit.get("neighborhood"),
+                "latitude": geoloc.get("lat"),
+                "longitude": geoloc.get("lng"),
+                "phone": contact.get("phone_number"),
+            }
+        )
+    return results
+
+
+def extract_opentable_results(body: Any) -> list[dict[str, Any]]:
+    try:
+        raw_results = body["data"]["autocomplete"]["autocompleteResults"]
+    except (KeyError, TypeError):
+        return []
+    if not isinstance(raw_results, list):
+        return []
+
+    results: list[dict[str, Any]] = []
+    for item in raw_results:
+        if not isinstance(item, dict) or item.get("type") != "Restaurant":
+            continue
+        provider_id = item.get("id")
+        name = item.get("name")
+        if provider_id is None or not isinstance(name, str):
+            continue
+        results.append(
+            {
+                "provider_id": f"ot:{provider_id}",
+                "name": name,
+                "locality": item.get("metroName"),
+                "neighborhood": item.get("neighborhoodName"),
+                "latitude": item.get("latitude"),
+                "longitude": item.get("longitude"),
+                "phone": None,
+            }
+        )
+    return results
+
+
+def classify_search_response(status_code: int, body: str, provider: str) -> str:
+    lowered = body.lower()
+    if status_code in (401, 403):
+        return BLOCKED
+    if status_code == 429:
+        return RATE_LIMITED
+    if status_code >= 500:
+        return HTTP_ERROR
+    try:
+        parsed = json.loads(body)
+    except (TypeError, json.JSONDecodeError):
+        return (
+            BLOCKED
+            if any(marker in lowered for marker in CHALLENGE_MARKERS)
+            else UPSTREAM_CHANGED
+        )
+    if status_code != 200 or not isinstance(parsed, dict) or parsed.get("errors"):
+        return UPSTREAM_CHANGED
+
+    if provider == "resy":
+        try:
+            results = parsed["search"]["hits"]
+        except (KeyError, TypeError):
+            return UPSTREAM_CHANGED
+    elif provider == "opentable":
+        try:
+            results = parsed["data"]["autocomplete"]["autocompleteResults"]
+        except (KeyError, TypeError):
+            return UPSTREAM_CHANGED
+    else:
+        return UPSTREAM_CHANGED
+    if not isinstance(results, list):
+        return UPSTREAM_CHANGED
+    return RESULTS_FOUND if results else NO_RESULTS
+
+
 def _bootstrap_headers() -> dict[str, str]:
     return {
         "Accept": "text/html,application/xhtml+xml",
@@ -185,6 +315,137 @@ def _gql_headers(csrf: str) -> dict[str, str]:
         "ot-page-type": "restprofilepage",
         "x-query-timeout": "10000",
     }
+
+
+def _autocomplete_headers(csrf: str) -> dict[str, str]:
+    headers = _gql_headers(csrf)
+    headers["ot-page-group"] = "search"
+    headers["ot-page-type"] = "multi-search"
+    return headers
+
+
+def run_search_probe(
+    term: str,
+    city: str | None,
+    latitude: float,
+    longitude: float,
+) -> tuple[dict[str, Any], int]:
+    from curl_cffi import requests
+
+    started = time.perf_counter()
+    region = os.getenv("FLY_REGION", "local")
+    output: dict[str, Any] = {
+        "probe_ts": datetime.now(timezone.utc).isoformat(),
+        "region": region,
+        "term": term,
+        "city": city,
+        "latitude": latitude,
+        "longitude": longitude,
+        "providers": {},
+    }
+
+    resy_headers = {
+        "Authorization": f'ResyAPI api_key="{RESY_PUBLIC_API_KEY}"',
+        "Origin": "https://resy.com",
+        "Referer": "https://resy.com/",
+        "Accept": "application/json, text/plain, */*",
+        "Content-Type": "application/json",
+    }
+    try:
+        resy_response = requests.post(
+            f"{RESY_ORIGIN}/3/venuesearch/search",
+            headers=resy_headers,
+            json={
+                "query": f"{term} {city}".strip() if city else term,
+                "per_page": 10,
+                "types": ["venue"],
+            },
+            impersonate="chrome",
+            timeout=30,
+        )
+        resy_state = classify_search_response(
+            resy_response.status_code,
+            resy_response.text,
+            "resy",
+        )
+        output["providers"]["resy"] = {
+            "status": resy_state,
+            "http_status": resy_response.status_code,
+            "results": extract_resy_results(resy_response.json(), city=city)
+            if resy_state in (RESULTS_FOUND, NO_RESULTS)
+            else [],
+        }
+    except Exception as error:
+        output["providers"]["resy"] = {
+            "status": NETWORK_ERROR,
+            "error": str(error),
+            "results": [],
+        }
+
+    session = requests.Session(impersonate="chrome")
+    try:
+        bootstrap = session.get(
+            f"{ORIGIN}{BOOTSTRAP_PATH}",
+            headers=_bootstrap_headers(),
+            timeout=30,
+        )
+        csrf = extract_csrf(bootstrap.text)
+    except Exception as error:
+        bootstrap = None
+        csrf = None
+        output["providers"]["opentable"] = {
+            "status": NETWORK_ERROR,
+            "error": str(error),
+            "results": [],
+        }
+
+    if "opentable" not in output["providers"]:
+        if bootstrap is None or bootstrap.status_code != 200 or not csrf:
+            output["providers"]["opentable"] = {
+                "status": BLOCKED if bootstrap and bootstrap.status_code in (401, 403) else UPSTREAM_CHANGED,
+                "http_status": bootstrap.status_code if bootstrap else None,
+                "results": [],
+            }
+        else:
+            url = f"{ORIGIN}{GQL_PATH}?optype=query&opname=Autocomplete"
+            payload = build_autocomplete_payload(
+                term=term,
+                latitude=latitude,
+                longitude=longitude,
+                query_hash=os.getenv("OPENTABLE_AUTOCOMPLETE_HASH", DEFAULT_AUTOCOMPLETE_HASH),
+            )
+            response = None
+            for attempt, delay in enumerate((0, 0.75, 5), start=1):
+                if delay:
+                    time.sleep(delay)
+                response = session.post(
+                    url,
+                    headers=_autocomplete_headers(csrf),
+                    json=payload,
+                    timeout=30,
+                )
+                if response.status_code != 403 or attempt == 3:
+                    break
+            state = classify_search_response(
+                response.status_code,
+                response.text,
+                "opentable",
+            )
+            output["providers"]["opentable"] = {
+                "status": state,
+                "http_status": response.status_code,
+                "results": extract_opentable_results(response.json())
+                if state in (RESULTS_FOUND, NO_RESULTS)
+                else [],
+            }
+
+    valid = sum(
+        provider["status"] in (RESULTS_FOUND, NO_RESULTS)
+        for provider in output["providers"].values()
+    )
+    output["valid_providers"] = valid
+    output["duration_ms"] = round((time.perf_counter() - started) * 1000)
+    return output, 0 if valid == 2 else 1
 
 
 def run_probe(
@@ -312,7 +573,21 @@ def main() -> int:
     parser.add_argument("--days-ahead", type=int, default=7)
     parser.add_argument("--party-size", type=int, default=2)
     parser.add_argument("--time", default="19:00")
+    parser.add_argument("--search-term")
+    parser.add_argument("--city")
+    parser.add_argument("--latitude", type=float, default=40.7128)
+    parser.add_argument("--longitude", type=float, default=-74.0060)
     args = parser.parse_args()
+
+    if args.search_term:
+        output, exit_code = run_search_probe(
+            term=args.search_term,
+            city=args.city,
+            latitude=args.latitude,
+            longitude=args.longitude,
+        )
+        print(json.dumps(output, separators=(",", ":"), ensure_ascii=True))
+        return exit_code
 
     probe_date = args.date or (date.today() + timedelta(days=args.days_ahead)).isoformat()
     fixtures_path = Path(args.fixtures)
