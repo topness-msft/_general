@@ -1,0 +1,34 @@
+{
+  "data": {
+    "availability": [
+      {
+        "restaurantId": 100,
+        "availabilityDays": [
+          {
+            "dayOffset": 0,
+            "slots": [
+              {
+                "isAvailable": true,
+                "timeOffsetMinutes": 0,
+                "slotHash": "hash-a",
+                "type": "Standard"
+              },
+              {
+                "isAvailable": true,
+                "timeOffsetMinutes": 30,
+                "slotHash": "hash-b",
+                "type": "Bar"
+              },
+              {
+                "isAvailable": false,
+                "timeOffsetMinutes": 60,
+                "slotHash": "hash-c",
+                "type": "Standard"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
